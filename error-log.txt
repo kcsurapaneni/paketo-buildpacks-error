@@ -1,0 +1,159 @@
+[INFO] --- spring-boot-maven-plugin:3.3.1:build-image (default-cli) @ demo ---
+[INFO] Building image 'docker.io/library/demo:0.0.1-SNAPSHOT'
+[INFO] 
+[INFO]  > Pulling builder image 'docker.io/paketobuildpacks/builder-jammy-tiny:latest' 100%
+[INFO]  > Pulled builder image 'paketobuildpacks/builder-jammy-tiny@sha256:996d9599193d3a73c0727e1e041192b13aedc5ba3f2f90478be4d9d38a0d35cd'
+[INFO]  > Pulling run image 'docker.io/paketobuildpacks/run-jammy-tiny:latest' 100%
+[INFO]  > Pulled run image 'paketobuildpacks/run-jammy-tiny@sha256:703d6c7b862e3056afd1e4dc29b59039082da337d9d862137186049e2a36e3ee'
+[INFO]  > Executing lifecycle version v0.20.0
+[INFO]  > Using build cache volume 'pack-cache-5cbe5692dbc4.build'
+[INFO] 
+[INFO]  > Running creator
+[INFO]     [creator]     ===> ANALYZING
+[INFO]     [creator]     Restoring data for SBOM from previous image
+[INFO]     [creator]     ===> DETECTING
+[INFO]     [creator]     target distro name/version labels not found, reading /etc/os-release file
+[INFO]     [creator]     6 of 15 buildpacks participating
+[INFO]     [creator]     paketo-buildpacks/ca-certificates   3.8.2
+[INFO]     [creator]     paketo-buildpacks/bellsoft-liberica 10.8.1
+[INFO]     [creator]     paketo-buildpacks/syft              1.47.1
+[INFO]     [creator]     paketo-buildpacks/executable-jar    6.10.1
+[INFO]     [creator]     paketo-buildpacks/spring-boot       5.30.1
+[INFO]     [creator]     paketo-buildpacks/native-image      5.14.1
+[INFO]     [creator]     ===> RESTORING
+[INFO]     [creator]     Restoring metadata for "paketo-buildpacks/ca-certificates:helper" from app image
+[INFO]     [creator]     ===> BUILDING
+[INFO]     [creator]     target distro name/version labels not found, reading /etc/os-release file
+[INFO]     [creator]     
+[INFO]     [creator]     Paketo Buildpack for CA Certificates 3.8.2
+[INFO]     [creator]       https://github.com/paketo-buildpacks/ca-certificates
+[INFO]     [creator]       Build Configuration:
+[INFO]     [creator]         $BP_EMBED_CERTS                    false  Embed certificates into the image
+[INFO]     [creator]         $BP_ENABLE_RUNTIME_CERT_BINDING    true   Deprecated: Enable/disable certificate helper layer to add certs at runtime
+[INFO]     [creator]         $BP_RUNTIME_CERT_BINDING_DISABLED  false  Disable certificate helper layer to add certs at runtime
+[INFO]     [creator]       Launch Helper: Reusing cached layer
+[INFO]     [creator]     
+[INFO]     [creator]     Paketo Buildpack for BellSoft Liberica 10.8.1
+[INFO]     [creator]       https://github.com/paketo-buildpacks/bellsoft-liberica
+[INFO]     [creator]       Build Configuration:
+[INFO]     [creator]         $BP_JVM_JLINK_ARGS           --no-man-pages --no-header-files --strip-debug --compress=1  configure custom link arguments (--output must be omitted)
+[INFO]     [creator]         $BP_JVM_JLINK_ENABLED        false                                                        enables running jlink tool to generate custom JRE
+[INFO]     [creator]         $BP_JVM_TYPE                 JRE                                                          the JVM type - JDK or JRE
+[INFO]     [creator]         $BP_JVM_VERSION              17                                                           the Java version
+[INFO]     [creator]       Launch Configuration:
+[INFO]     [creator]         $BPL_DEBUG_ENABLED           false                                                        enables Java remote debugging support
+[INFO]     [creator]         $BPL_DEBUG_PORT              8000                                                         configure the remote debugging port
+[INFO]     [creator]         $BPL_DEBUG_SUSPEND           false                                                        configure whether to suspend execution until a debugger has attached
+[INFO]     [creator]         $BPL_HEAP_DUMP_PATH                                                                       write heap dumps on error to this path
+[INFO]     [creator]         $BPL_JAVA_NMT_ENABLED        true                                                         enables Java Native Memory Tracking (NMT)
+[INFO]     [creator]         $BPL_JAVA_NMT_LEVEL          summary                                                      configure level of NMT, summary or detail
+[INFO]     [creator]         $BPL_JFR_ARGS                                                                             configure custom Java Flight Recording (JFR) arguments
+[INFO]     [creator]         $BPL_JFR_ENABLED             false                                                        enables Java Flight Recording (JFR)
+[INFO]     [creator]         $BPL_JMX_ENABLED             false                                                        enables Java Management Extensions (JMX)
+[INFO]     [creator]         $BPL_JMX_PORT                5000                                                         configure the JMX port
+[INFO]     [creator]         $BPL_JVM_HEAD_ROOM           0                                                            the headroom in memory calculation
+[INFO]     [creator]         $BPL_JVM_LOADED_CLASS_COUNT  35% of classes                                               the number of loaded classes in memory calculation
+[INFO]     [creator]         $BPL_JVM_THREAD_COUNT        250                                                          the number of threads in memory calculation
+[INFO]     [creator]         $JAVA_TOOL_OPTIONS                                                                        the JVM launch flags
+[INFO]     [creator]         Using Java version 17 extracted from MANIFEST.MF
+[INFO]     [creator]       BellSoft Liberica NIK 17.0.11: Contributing to layer
+[INFO]     [creator]         Downloading from https://github.com/bell-sw/LibericaNIK/releases/download/23.0.4+1-17.0.11+10/bellsoft-liberica-vm-core-openjdk17.0.11+10-23.0.4+1-linux-amd64.tar.gz
+[INFO]     [creator]         Verifying checksum
+[INFO]     [creator]         Expanding to /layers/paketo-buildpacks_bellsoft-liberica/native-image-svm
+[INFO]     [creator]         Adding 137 container CA certificates to JVM truststore
+[INFO]     [creator]         Writing env.build/JAVA_HOME.override
+[INFO]     [creator]         Writing env.build/JDK_HOME.override
+[INFO]     [creator]     
+[INFO]     [creator]     Paketo Buildpack for Syft 1.47.1
+[INFO]     [creator]       https://github.com/paketo-buildpacks/syft
+[INFO]     [creator]         Downloading from https://github.com/anchore/syft/releases/download/v0.105.1/syft_0.105.1_linux_amd64.tar.gz
+[INFO]     [creator]         Verifying checksum
+[INFO]     [creator]         Writing env.build/SYFT_CHECK_FOR_APP_UPDATE.default
+[INFO]     [creator]     
+[INFO]     [creator]     Paketo Buildpack for Executable JAR 6.10.1
+[INFO]     [creator]       https://github.com/paketo-buildpacks/executable-jar
+[INFO]     [creator]       Command "packages" is deprecated, use `syft scan` instead
+[INFO]     [creator]       Class Path: Contributing to layer
+[INFO]     [creator]         Writing env/CLASSPATH.delim
+[INFO]     [creator]         Writing env/CLASSPATH.prepend
+[INFO]     [creator]       Process types:
+[INFO]     [creator]         executable-jar: java org.springframework.boot.loader.launch.JarLauncher (direct)
+[INFO]     [creator]         task:           java org.springframework.boot.loader.launch.JarLauncher (direct)
+[INFO]     [creator]         web:            java org.springframework.boot.loader.launch.JarLauncher (direct)
+[INFO]     [creator]     
+[INFO]     [creator]     Paketo Buildpack for Spring Boot 5.30.1
+[INFO]     [creator]       https://github.com/paketo-buildpacks/spring-boot
+[INFO]     [creator]       Build Configuration:
+[INFO]     [creator]         $BPL_JVM_CDS_ENABLED                 false  whether to enable CDS optimizations at runtime
+[INFO]     [creator]         $BPL_SPRING_AOT_ENABLED              false  whether to enable Spring AOT at runtime
+[INFO]     [creator]         $BP_JVM_CDS_ENABLED                  false  whether to enable CDS & perform JVM training run
+[INFO]     [creator]         $BP_SPRING_AOT_ENABLED               false  whether to enable Spring AOT
+[INFO]     [creator]         $BP_SPRING_CLOUD_BINDINGS_DISABLED   false  whether to contribute Spring Boot cloud bindings support
+[INFO]     [creator]         $BP_SPRING_CLOUD_BINDINGS_VERSION    1      default version of Spring Cloud Bindings library to contribute
+[INFO]     [creator]       Launch Configuration:
+[INFO]     [creator]         $BPL_SPRING_CLOUD_BINDINGS_DISABLED  false  whether to auto-configure Spring Boot environment properties from bindings
+[INFO]     [creator]         $BPL_SPRING_CLOUD_BINDINGS_ENABLED   true   Deprecated - whether to auto-configure Spring Boot environment properties from bindings
+[INFO]     [creator]       Class Path: Contributing to layer
+[INFO]     [creator]         Writing env.build/BP_NATIVE_IMAGE_BUILD_ARGUMENTS_FILE.default
+[INFO]     [creator]         Writing env.build/CLASSPATH.append
+[INFO]     [creator]         Writing env.build/CLASSPATH.delim
+[INFO]     [creator]       Image labels:
+[INFO]     [creator]         org.opencontainers.image.title
+[INFO]     [creator]         org.opencontainers.image.version
+[INFO]     [creator]         org.springframework.boot.version
+[INFO]     [creator]     
+[INFO]     [creator]     Paketo Buildpack for Native Image 5.14.1
+[INFO]     [creator]       https://github.com/paketo-buildpacks/native-image
+[INFO]     [creator]       Build Configuration:
+[INFO]     [creator]         $BP_BINARY_COMPRESSION_METHOD                                                    Compression mechanism used to reduce binary size. Options: `none` (default), `upx` or `gzexe`
+[INFO]     [creator]         $BP_NATIVE_IMAGE                       true                                      enable native image build
+[INFO]     [creator]         $BP_NATIVE_IMAGE_BUILD_ARGUMENTS                                                 arguments to pass to the native-image command
+[INFO]     [creator]         $BP_NATIVE_IMAGE_BUILD_ARGUMENTS_FILE  /workspace/META-INF/native-image/argfile  a file with arguments to pass to the native-image command
+[INFO]     [creator]         $BP_NATIVE_IMAGE_BUILT_ARTIFACT                                                  the built application artifact explicitly, required if building from a JAR
+[INFO]     [creator]       Command "packages" is deprecated, use `syft scan` instead
+[INFO]     [creator]       Native Image: Contributing to layer
+[INFO]     [creator]         Executing native-image --no-fallback -H:+StaticExecutableWithDynamicLibC @/workspace/META-INF/native-image/argfile -H:Name=/layers/paketo-buildpacks_native-image/native-image/io.paketo.demo.DemoApplication -cp /workspace:/workspace/BOOT-INF/classes:/workspace/BOOT-INF/lib/spring-boot-3.3.1.jar:/workspace/BOOT-INF/lib/spring-context-6.1.10.jar:/workspace/BOOT-INF/lib/spring-aop-6.1.10.jar:/workspace/BOOT-INF/lib/spring-expression-6.1.10.jar:/workspace/BOOT-INF/lib/spring-boot-autoconfigure-3.3.1.jar:/workspace/BOOT-INF/lib/logback-classic-1.5.6.jar:/workspace/BOOT-INF/lib/logback-core-1.5.6.jar:/workspace/BOOT-INF/lib/log4j-to-slf4j-2.23.1.jar:/workspace/BOOT-INF/lib/log4j-api-2.23.1.jar:/workspace/BOOT-INF/lib/jul-to-slf4j-2.0.13.jar:/workspace/BOOT-INF/lib/jakarta.annotation-api-2.1.1.jar:/workspace/BOOT-INF/lib/snakeyaml-2.2.jar:/workspace/BOOT-INF/lib/spring-boot-actuator-autoconfigure-3.3.1.jar:/workspace/BOOT-INF/lib/spring-boot-actuator-3.3.1.jar:/workspace/BOOT-INF/lib/jackson-databind-2.17.1.jar:/workspace/BOOT-INF/lib/jackson-annotations-2.17.1.jar:/workspace/BOOT-INF/lib/jackson-core-2.17.1.jar:/workspace/BOOT-INF/lib/jackson-datatype-jsr310-2.17.1.jar:/workspace/BOOT-INF/lib/micrometer-observation-1.13.1.jar:/workspace/BOOT-INF/lib/micrometer-commons-1.13.1.jar:/workspace/BOOT-INF/lib/micrometer-jakarta9-1.13.1.jar:/workspace/BOOT-INF/lib/micrometer-core-1.13.1.jar:/workspace/BOOT-INF/lib/HdrHistogram-2.2.2.jar:/workspace/BOOT-INF/lib/LatencyUtils-2.0.3.jar:/workspace/BOOT-INF/lib/jackson-datatype-jdk8-2.17.1.jar:/workspace/BOOT-INF/lib/jackson-module-parameter-names-2.17.1.jar:/workspace/BOOT-INF/lib/reactor-netty-http-1.1.20.jar:/workspace/BOOT-INF/lib/netty-codec-http-4.1.111.Final.jar:/workspace/BOOT-INF/lib/netty-common-4.1.111.Final.jar:/workspace/BOOT-INF/lib/netty-buffer-4.1.111.Final.jar:/workspace/BOOT-INF/lib/netty-transport-4.1.111.Final.jar:/workspace/BOOT-INF/lib/netty-codec-4.1.111.Final.jar:/workspace/BOOT-INF/lib/netty-handler-4.1.111.Final.jar:/workspace/BOOT-INF/lib/netty-codec-http2-4.1.111.Final.jar:/workspace/BOOT-INF/lib/netty-resolver-dns-4.1.111.Final.jar:/workspace/BOOT-INF/lib/netty-resolver-4.1.111.Final.jar:/workspace/BOOT-INF/lib/netty-codec-dns-4.1.111.Final.jar:/workspace/BOOT-INF/lib/netty-resolver-dns-native-macos-4.1.111.Final-osx-x86_64.jar:/workspace/BOOT-INF/lib/netty-resolver-dns-classes-macos-4.1.111.Final.jar:/workspace/BOOT-INF/lib/netty-transport-native-epoll-4.1.111.Final-linux-x86_64.jar:/workspace/BOOT-INF/lib/netty-transport-native-unix-common-4.1.111.Final.jar:/workspace/BOOT-INF/lib/netty-transport-classes-epoll-4.1.111.Final.jar:/workspace/BOOT-INF/lib/reactor-netty-core-1.1.20.jar:/workspace/BOOT-INF/lib/netty-handler-proxy-4.1.111.Final.jar:/workspace/BOOT-INF/lib/netty-codec-socks-4.1.111.Final.jar:/workspace/BOOT-INF/lib/spring-web-6.1.10.jar:/workspace/BOOT-INF/lib/spring-beans-6.1.10.jar:/workspace/BOOT-INF/lib/spring-webflux-6.1.10.jar:/workspace/BOOT-INF/lib/slf4j-api-2.0.13.jar:/workspace/BOOT-INF/lib/spring-core-6.1.10.jar:/workspace/BOOT-INF/lib/spring-jcl-6.1.10.jar:/workspace/BOOT-INF/lib/reactor-core-3.6.7.jar:/workspace/BOOT-INF/lib/reactive-streams-1.0.4.jar:/workspace/BOOT-INF/lib/spring-boot-jarmode-tools-3.3.1.jar io.paketo.demo.DemoApplication
+[INFO]     [creator]     [thread 251 also had an error]
+[INFO]     [creator]     [thread 262 also had an error]
+[INFO]     [creator]     #
+[INFO]     [creator]     # A fatal error has been detected by the Java Runtime Environment:
+[INFO]     [creator]     #
+[INFO]     [creator]     #  SIGSEGV (0xb) at pc=0x00007fffdf34fba2, pid=229, tid=264
+[INFO]     [creator]     #
+[INFO]     [creator]     # JRE version: OpenJDK Runtime Environment Liberica-NIK-23.0.4-1 (17.0.11+10) (build 17.0.11+10-LTS)
+[INFO]     [creator]     # Java VM: OpenJDK 64-Bit Server VM Liberica-NIK-23.0.4-1 (17.0.11+10-LTS, mixed mode, tiered, jvmci, compressed oops, compressed class ptrs, parallel gc, linux-amd64)
+[INFO]     [creator]     # Problematic frame:
+[INFO]     [creator]     # J 2185 c1[thread 261 also had an error]
+[INFO]     [creator]      java.util.concurrent.ConcurrentHashMap.computeIfAbsent(Ljava/lang/Object;Ljava/util/function/Function;)Ljava/lang/Object; java.base@17.0.11 (576 bytes) @ 0x00007fffdf34fba2 [0x00007fffdf34f380+0x0000000000000822]
+[INFO]     [creator]     #
+[INFO]     [creator]     # No core dump will be written. Core dumps have been disabled. To enable core dumping, try "ulimit -c unlimited" before starting Java again
+[INFO]     [creator]     #
+[INFO]     [creator]     [thread 260 also had an error]
+[INFO]     [creator]     [thread 249 also had an error]
+[INFO]     [creator]     [thread 250 also had an error]
+[INFO]     [creator]     [thread 263 also had an error]
+[INFO]     [creator]     # An error report file with more information is saved as:
+[INFO]     [creator]     # /layers/paketo-buildpacks_native-image/native-image/hs_err_pid229.log
+[INFO]     [creator]     #
+[INFO]     [creator]     # If you would like to submit a bug report, please visit:
+[INFO]     [creator]     #   https://bell-sw.com/support
+[INFO]     [creator]     #
+[INFO]     [creator]     Error: Image build request for 'io.paketo.demo.DemoApplication' (pid: 229, path: /layers/paketo-buildpacks_native-image/native-image) failed with exit status 134
+[INFO]     [creator]     unable to invoke layer creator
+[INFO]     [creator]     unable to contribute native-image layer
+[INFO]     [creator]     error running build
+[INFO]     [creator]     exit status 134
+[INFO]     [creator]     ERROR: failed to build: exit status 1
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  01:45 min
+[INFO] Finished at: 2024-07-26T09:13:52-06:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.springframework.boot:spring-boot-maven-plugin:3.3.1:build-image (default-cli) on project demo: Execution default-cli of goal org.springframework.boot:spring-boot-maven-plugin:3.3.1:build-image failed: Builder lifecycle 'creator' failed with status code 51 -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/PluginExecutionException
